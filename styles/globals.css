@@ -11,8 +11,16 @@ a {
   text-decoration: none;
 }
 
+
+
+@font-face {
+  font-family: vazir;
+  src: url('../public/assets/font/num_light.ttf');
+}
+
 * {
   box-sizing: border-box;
+  font-family: vazir  !important;
 }
 
 @media (prefers-color-scheme: dark) {

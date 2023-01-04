@@ -5,22 +5,75 @@ import styles from "./index.module.css";
 import Collapse from "react-bootstrap/Collapse";
 import Button from "react-bootstrap/Button";
 
-function index({ data }) {
-  //   const [open, setOpen] = useState(false);
+function index() {
+  const [toggle, setToggle] = useState(0);
+  const [open, setOpen] = useState(false);
   const [objectsList, setObjectsList] = useState([
-    { id: 1, name1: "عرفانیان", name2: "آتش سوزی-صنعتی", name3: "پارسیان" },
-    { id: 2, name1: "عرفانیان", name2: "آتش سوزی-صنعتی", name3: "پارسیان" },
-    { id: 3, name1: "عرفانیان", name2: "آتش سوزی-صنعتی", name3: "پارسیان" },
-    { id: 4, name1: "عرفانیان", name2: "آتش سوزی-صنعتی", name3: "پارسیان" },
+    {
+      id: 1,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      activity:"کافی شاپ",
+      name2: "آتش سوزی-غیر صنعتی",
+      name3: "پارسیان",
+      type: "آتش سوزی"
+    },
+    {
+      id: 2,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      name2: "آتش سوزی-صنعتی",
+      name3: "پارسیان",
+      type: "آتش سوزی"
+    },
+    {
+      id: 3,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      name2: "مسئولیت-تمام خطر اموال",
+      name3: "پارسیان",
+      type: "مسئولیت"
+    },
+    {
+      id: 4,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      name2: "اتوموبیل-سواری",
+      name3: "پارسیان",
+      type: "خودرو"
+    },
+    {
+      id: 5,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      name2: "اتوموبیل-سواری",
+      name3: "پارسیان",
+      type: "خودرو"
+    },
+    {
+      id: 6,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      name2: "مهندسی-شکست ماشین آلات",
+      name3: "پارسیان",
+      type: "مهندسی"
+    },
+    {
+      id: 7,
+      erjaDate: "1401/10/11",
+      lateDate: "1401/10/12",
+      name1: "عرفانیان",
+      name2: "مهندسی-شکست ماشین آلات",
+      name3: "پارسیان",
+      type: "مهندسی"
+    }
   ]);
-
-  const handleClick = (item) => {
-    setObjectsList(
-      objectsList.map((e) =>
-        e.id === item.id ? { ...e, isOpen: !e.isOpen } : e
-      )
-    );
-  };
 
   return (
     <Container fluid>
@@ -137,82 +190,129 @@ function index({ data }) {
           <div style={{ direction: "rtl", cursor: "pointer" }}>
             {objectsList.map((item, index) => (
               <div
-                onClick={() => handleClick(item)}
-                className="border m-2 p-2 rounded"
+                onClick={() => {
+                  setToggle(item.id);
+                  toggle === index + 1 && setToggle(!toggle);
+                }}
+                className="border m-2  rounded"
               >
-                <div className="d-flex justify-content-between">
-                  <h5>بیمه گذار:</h5>
-                  <p>عرفانیان</p>
-                  <div></div>
+                <div
+                  className="p-2"
+                  style={
+                    item.type === "آتش سوزی"
+                      ? { backgroundColor: "#FAD4D2" }
+                      : item.type === "مسئولیت"
+                      ? { backgroundColor: "#C3F7E2" }
+                      : item.type === "خودرو"
+                      ? { backgroundColor: "#EEFF1B" }
+                      : item.type === "مهندسی"
+                      ? { backgroundColor: "#B5D5F7" }
+                      : {}
+                  }
+                >
+                  <div className="d-flex justify-content-between">
+                    <h5 style={{ width: "100%",fontSize:"18px" }}>تاریخ ارجاع</h5>
+                    <div style={{ width: "100%" }}>
+                      {" "}
+                      <p style={{ fontWeight: "bold", textAlign: "right" }}>
+                        {item.erjaDate}
+                      </p>
+                    </div>
+
+                    <div></div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <h5 style={{ width: "100%",fontSize:"18px" }}>بازدید با تاخیر</h5>
+                    <div style={{ width: "100%" }}>
+                      {" "}
+                      <p style={{ fontWeight: "bold", textAlign: "right" }}>
+                        {item.lateDate}
+                      </p>
+                    </div>
+                    <div></div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <h5 style={{ width: "100%",fontSize:"18px" }}>بیمه گذار</h5>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        width: "100%",
+                        textAlign: "right"
+                      }}
+                    >
+                      {item.name1}-{item.activity}
+                    </p>
+                    <div></div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <h5 style={{ width: "100%",fontSize:"18px" }}>بیمه نامه</h5>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        width: "100%",
+                        textAlign: "right"
+                      }}
+                    >
+                      {item.name2}
+                    </p>
+                    <div></div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <h5 style={{ width: "100%",fontSize:"18px" }}>بیمه گر</h5>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        width: "100%",
+                        textAlign: "right"
+                      }}
+                    >
+                      {item.name3}
+                    </p>
+                    <div></div>
+                  </div>
                 </div>
-                <div className="d-flex justify-content-between">
-                  <h5>بیمه نامه:</h5>
-                  <p>آتش سوزی-غیرصنعتی</p>
-                  <div></div>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <h5>بیمه گر:</h5>
-                  <p>پارسیان</p>
-                  <div></div>
-                </div>
-                <Collapse in={item.isOpen}>
+                <Collapse in={toggle === index + 1 ? true : false}>
                   <div
                     className="border rounded"
                     style={{
                       direction: "rtl",
                       cursor: "pointer",
                       padding: "0",
-                      marginTop: "5px",
+                      marginTop: "5px"
                     }}
                     id="example-collapse-text"
                   >
                     <div className=" d-flex justify-content-between p-2">
-                      <h5>شماره پرونده:</h5>
+                      <h5>شماره پرونده</h5>
                       <p>4888</p>
                     </div>
                     <hr style={{ width: "95%" }} className=" m-auto" />
+                    
+                    
                     <div className=" d-flex justify-content-between p-2">
-                      <h5>فعالیت:</h5>
-                      <p>کافی شاپ</p>
-                    </div>
-                    <hr style={{ width: "95%" }} className=" m-auto" />
-                    <div className=" d-flex justify-content-between p-2">
-                      <h5>تاریخ ارجاع:</h5>
-                      <p>1401/10/08</p>
-                    </div>
-                    <hr style={{ width: "95%" }} className=" m-auto" />
-                    <div className=" d-flex justify-content-between p-2">
-                      <h5>شعبه:</h5>
+                      <h5>شعبه</h5>
                       <p>مشهد</p>
                     </div>
                     <hr style={{ width: "95%" }} className=" m-auto" />
+                    
                     <div className=" d-flex justify-content-between p-2">
-                      <h5>شماره نامه:</h5>
-                      <p>1401-4575</p>
-                    </div>
-                    <hr style={{ width: "95%" }} className=" m-auto" />
-                    <div className=" d-flex justify-content-between p-2">
-                      <h5>شماره گزارش:</h5>
+                      <h5>شماره گزارش</h5>
                       <p>2339-آت-1401</p>
                     </div>
                     <hr style={{ width: "95%" }} className=" m-auto" />
                     <div className=" d-flex justify-content-between p-2">
-                      <h5>شهر:</h5>
+                      <h5>شهر</h5>
                       <p>مشهد</p>
                     </div>
+                   
                     <hr style={{ width: "95%" }} className=" m-auto" />
                     <div className=" d-flex justify-content-between p-2">
-                      <h5>تاریخ بازدید با تاخیر:</h5>
-                      <p>1401/10/11</p>
-                    </div>
-                    <hr style={{ width: "95%" }} className=" m-auto" />
-                    <div className=" d-flex justify-content-between p-2">
-                      <h5>کارشناس بازدید:</h5>
+                      <h5>کارشناس بازدید</h5>
                       <p>رسول فلاحی</p>
                     </div>
                     <hr style={{ width: "95%" }} className=" m-auto" />
                     <div className=" d-flex justify-content-between p-2">
-                      <h5>وضعیت:</h5>
+                      <h5>وضعیت</h5>
                       <p>بازدید شد-در حال تهیه گذارش</p>
                     </div>
                   </div>
