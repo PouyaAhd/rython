@@ -1,0 +1,13 @@
+.layout_responsive {
+  display: none;
+
+}
+
+@media (max-width: 768px) {
+  .layout_desktop {
+    display: none;
+  }
+  .layout_responsive {
+    display: block;
+  }
+}

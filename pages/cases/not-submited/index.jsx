@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 import Collapse from "react-bootstrap/Collapse";
 import Button from "react-bootstrap/Button";
 import { BsCheckAll } from "react-icons/bs";
-import Layout from "../../components/pages/ui/layout/index";
+import Layout from "../../../components/pages/ui/layout/index";
 
 function index() {
   const [toggle, setToggle] = useState(0);
@@ -211,8 +211,8 @@ function index() {
 
   return (
     <Layout>
-      <Container fluid>
-        <div className="justify-content-start  d-flex  mt-2">
+      <Container fluid className="p-0">
+        <div style={{direction:"rtl"}} className="justify-content-start  d-flex  mt-2">
           <div
             className={
               type.find((f) => f === "آتش سوزی")
@@ -235,7 +235,7 @@ function index() {
               });
             }}
           >
-            {fire.length}:آتش سوزی
+          آتش سوزی: {fire.length}
           </div>
           <div
             className={
@@ -261,7 +261,7 @@ function index() {
               });
             }}
           >
-            {vehicle.length}:اتوموبیل
+            اتوموبیل: {vehicle.length}
           </div>
           <div
             className={
@@ -287,7 +287,7 @@ function index() {
               });
             }}
           >
-            مسئولیت:{responsibility.length}
+          مسئولیت: {responsibility.length}
           </div>
           <div
             className={
@@ -313,14 +313,14 @@ function index() {
               });
             }}
           >
-            مهندسی:{engineering.length}
+            مهندسی: {engineering.length}
           </div>
         </div>
         <hr />
         <Table className={styles.container} style={{ direction: "rtl" }}>
           <thead style={{ textAlign: "center" }}>
             <tr>
-              <th>حالت</th>
+              <th></th>
               <th>اولویت</th>
 
               <th>شماره پرونده</th>
@@ -332,7 +332,7 @@ function index() {
               <th>شعبه</th>
               <th>شماره گذارش</th>
               <th>شهر</th>
-              <th>تاریخ بازدید با تاخریر</th>
+              <th> بازدید با تاخریر</th>
               <th>کارشناس بازدید</th>
               <th>وضعیت</th>
             </tr>
