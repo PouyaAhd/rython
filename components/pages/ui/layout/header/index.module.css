@@ -1,0 +1,10 @@
+.res_nav{
+    display: none !important;
+}
+
+@media (max-width:768px) {
+    .res_nav{display: block;}
+    .desk_nav{
+        display: none;
+    }
+}

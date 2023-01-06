@@ -205,9 +205,6 @@ function index() {
     setEngineering(objectsList.filter((e) => e.type === "مهندسی"));
   }, []);
 
-  // useEffect(() => {
-  //   console.log(filteredOption);
-  // }, [filteredOption]);
 
   return (
     <Layout>
@@ -393,7 +390,7 @@ function index() {
           </tbody>
         </Table>
 
-        <Row className={styles.responsive}>
+        <div className={styles.responsive}>
           <Card className="border-0">
             <div style={{ direction: "rtl", cursor: "pointer" }}>
               {filteredOption.map((item, index) => (
@@ -560,7 +557,7 @@ function index() {
               ))}
             </div>
           </Card>
-        </Row>
+        </div>
       </Container>
     </Layout>
   );

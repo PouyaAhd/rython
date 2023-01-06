@@ -2,6 +2,7 @@ import Headers from "./header/index";
 import Footers from "./footer/index";
 import React, { useState } from "react";
 import styles from "./index.module.css";
+import router from 'next/router'
 import {
   DesktopOutlined,
   FileOutlined,
@@ -23,18 +24,22 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem("پرونده ها", "1", <PieChartOutlined />, [
-    getItem('ارجاع شده به کارشناس'),
-    getItem('ارسال نشده'),
-    getItem('بازدید شده'),
-    getItem('آماده ارسال'),
-    getItem('دارای نقص'),
+    getItem(<div onClick={() => { router.push("/cases/referred-to-expert") }}>ارجاع شده به کارشناس</div>),
+
+    getItem(<div onClick={() => { router.push("/cases/not-submited") }}>ارسال نشده</div>),
+    getItem(<div onClick={() => { router.push("/cases/visited") }}>بازدید شده</div>),
+    getItem(<div onClick={() => { router.push("/cases/ready-to-submit") }}>آماده ارسال</div>),
+    getItem(<div onClick={() => { router.push("/cases/defective") }}>دارای نقص</div>),
   ]),
   getItem("ثبت پرونده بیمه", "2", <DesktopOutlined />),
   getItem("ثبت ساعت", "sub1", <UserOutlined />),
+
+
   getItem("دفتر کیهان", "sub2", <TeamOutlined />),
 ];
 
 function index({ children }) {
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -117,6 +122,7 @@ function index({ children }) {
         </div>
         <Footers />
       </div>
+
     </div>
   );
 }
