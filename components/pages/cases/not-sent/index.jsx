@@ -15,7 +15,8 @@ function index({
   vehicle,
   engineering,
   filteredOption,
-  toggle
+  toggle,
+  setToggle
 }) {
 
 
@@ -127,7 +128,9 @@ function index({
         >
           مهندسی: {engineering.length}
         </div>
+        
       </div>
+      <div style={{marginTop:"5px"}}><span style={{fontSize:"12px", color:"gray", marginRight:"5px"}}>برای فیلتر کردن روی هرکدام کلیک کنید</span></div>
       <hr />
       <Table className={styles.container} style={{ direction: "rtl" }}>
         <thead style={{ textAlign: "center" }}>
@@ -154,6 +157,7 @@ function index({
           {filteredOption.map((item) => (
             <>
               <tr
+              className={styles.cases}
                 key={item.id}
                 style={
                   item.type === "آتش سوزی"

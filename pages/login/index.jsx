@@ -23,7 +23,7 @@ function index() {
     const handleSubmit = () => {
         LoginUser((res) => {
             if (res.success) {
-                router.push('/')
+                router.push('/cases')
                 toast.success("با موفقیت وارد شدید")
             } else {
                 // setErrLogin(true)

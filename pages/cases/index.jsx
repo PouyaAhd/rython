@@ -239,6 +239,7 @@ function index() {
             setEngineering={setEngineering}
             filteredOption={filteredOption}
             toggle={toggle}
+            setToggle={setToggle}
           />
         </Tab>
         <Tab eventKey="بازدید شده" title="بازدید شده">
